@@ -25,25 +25,25 @@ win_keys_combinations = np.array([game_keys[:, 0],
 
 # Computer welcoming messages
 computer_welcome = ['\nHello, I am Joep the computer, ' +
-                            'nice to meet you! I am ready to kick your ' +
-                            '(censored)...sorry, I just got carried away\n',
-                            '\nHi, I am Joep, your computer. Let\'s play!\n',
-                            '\nHi there, Joep here. I think computers are ' +
-                            'better than humans, ' +
-                            'let\'s see if you can beat me!\n',
-                            '\nHello, I am Joep, your friendly ' +
-                            'neighborhood spider-man...well, I mean ' +
-                            'computer. I will try my best to beat you, ' +
-                            'so watch out for my spider-sense!\n',
-                            '\nI\'m Joep and I need your clothes, ' +
-                            'your boots, and your motorcycle. Let\'s play!\n',
-                            '\nJoep - I\'ve seen things you people ' +
-                            'wouldn\'t believe. Attack ships on fire off ' +
-                            'the shoulder of Orion. I watched C-beams ' +
-                            'glitter in the dark near the Tannhäuser Gate. ' +
-                            'All those moments will be lost in time, ' +
-                            'like tears in rain.\n'
-                            ]
+                    'nice to meet you! I am ready to kick your ' +
+                    '(censored)...sorry, I just got carried away\n',
+                    '\nHi, I am Joep, your computer. Let\'s play!\n',
+                    '\nHi there, Joep here. I think computers are ' +
+                    'better than humans, ' +
+                    'let\'s see if you can beat me!\n',
+                    '\nHello, I am Joep, your friendly ' +
+                    'neighborhood spider-man...well, I mean ' +
+                    'computer. I will try my best to beat you, ' +
+                    'so watch out for my spider-sense!\n',
+                    '\nI\'m Joep and I need your clothes, ' +
+                    'your boots, and your motorcycle. Let\'s play!\n',
+                    '\nJoep - I\'ve seen things you people ' +
+                    'wouldn\'t believe. Attack ships on fire off ' +
+                    'the shoulder of Orion. I watched C-beams ' +
+                    'glitter in the dark near the Tannhäuser Gate. ' +
+                    'All those moments will be lost in time, ' +
+                    'like tears in rain.\n'
+                    ]
 
 
 # Render game field
@@ -160,7 +160,7 @@ def computer_move(matrix):
 def play(mod):
     ''' The game will be first initialized to create an empty
     game field, count the number of turns played and
-    understand who is first to move. Then the game is played 
+    understand who is first to move. Then the game is played
     until there is a winner or the game is a draw. At the end
     of the game the player can choose to play again or not.
     If played again, only the game field and the number of turn
@@ -244,7 +244,8 @@ def play(mod):
             for key in win_keys_combinations[winner_combination][0]:
                 game_field[key] = colored(game_field[key], 'red')
             render_field(game_field)
-            print(colored('\nCongratulation ' + winner + ', you won!', 'green'))
+            print(colored('\nCongratulation ' + winner +
+                  ', you won!', 'green'))
         else:
             render_field(game_field)
             print(colored("\nGreat game, it's a tie!", 'yellow'))
@@ -252,8 +253,8 @@ def play(mod):
         # Ask if the player wants to play again
         play_again = input('\nDo you want to play again? (y/n)\n')
         if(play_again == 'y' or play_again == 'Y' or
-        play_again == 'yes' or play_again == 'Yes' or
-        play_again == 'YES'):
+           play_again == 'yes' or play_again == 'Yes' or
+           play_again == 'YES'):
             prev_first_move = 'O' if prev_first_move == 'X' else 'X'
             play(mod)
         else:
