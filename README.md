@@ -43,19 +43,19 @@ P.S.: To quit the game at any time, type "quit" or "exit"
     - vs a friend,
     - vs computer.
 
-<h2><img src="assets/images/game_mode.png" id="game-mode" alt="console screenshot" target="_blank" width=20%></h2>
+<h2><img src="assets/images/game_mode.png" id="game-mode" alt="console screenshot" target="_blank" width=50%></h2>
 
 - Colour prompt to highlight victories and messages.
 - Possibility of playing again, with alternating first movers.
 - Possibility of quitting the game without finishing it.
 
-<h2><img src="assets/images/color_restart.png" id="col-res" alt="console screenshot" target="_blank" width=18%></h2>
+<h2><img src="assets/images/color_restart.png" id="col-res" alt="console screenshot" target="_blank" width=50%></h2>
 
 - Input validation:
     - with every input request you can only enter the specified answers, otherwise you will be asked to enter the input again after a useful error message.
     - within the game, you can only play in the the empty cell. Hence, if the input is out of the game field you will be ask to enter again the input. The same will happen if you are playing inside the field, but in a cell alredy filled.
 
-<h2><img src="assets/images/error.png" id="err" alt="console screenshot" target="_blank" width=25%></h2>
+<h2><img src="assets/images/error.png" id="err" alt="console screenshot" target="_blank" width=50%></h2>
 
 ### Future feature
 
