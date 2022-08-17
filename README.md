@@ -69,7 +69,7 @@ For an easier understanding I will explain the algorithm in steps:
 1. The classic game board, with Xs and Os, is translated in a matrix (status matrix from now on) of 1, -1 and 0. The trasformation is done by mutating Xs in 1s, Os in -1s and empty cells in 0s. 
 2. Then the code perfom a sum of the status matrix cells over each of the possible winning combination (columns, rows and diagonals). Such result is employed in both determining if there is a victory and decide the next computer move.
 3. In determining the victory, the computer detect if there is a winning combination that either sums to 3 or -3. Once a victory is in place, knowing which of the 8 possible combination was exploited, the computer renders the game field with the winning trio highlighted. Moreover, the winner is printed in the console.
-4. In determining the next computer move, the sum of the winning combination are used to compute the distance both for the computer itslef (how far is from -3) and the opponent (how far is from 3). With the distances computed, the computer will choose to play on the winning combination of its opponent if she is closer to a winning. An example could be: the opponent has a max score among the possible combination of 2, while computer max score is -1. Then the computer is further from -3 than the opponent is to 3 and will play on the rival winning combination. If any tied score is in place, the computer will choose randomly among the same max scores.
+4. In determining the next computer move, the sum of the winning combination are used to compute the distance both for the computer itslef (how far is from -3) and the opponent (how far is from 3). With the distances computed, the computer will choose to play on its winning combination or the winning compination of its opponent if she is closer to a win result. An example could be: the opponent has a max score among the possible combination of 2, while computer max score is -1. Then the computer is further from -3 than the opponent is to 3 and will play on the rival winning combination. If any tied score among the combination is in place, the computer will choose randomly among the same max scores.
 
 ## Testing 
 
@@ -82,7 +82,7 @@ The code have been tested by:
 ## Bugs 
 
 ### Solved Bugs 
-- Within the computer choice algorithm it was possible that the best move wasn't possible. In such rare cases, the computer will play randomly among the empty cells.
+- Within the computer choice algorithm the best move wasn't sometimes possible. In such rare cases, the computer will play randomly among the empty cells.
 
 ### Remaining Bugs
 - There are no remaining bugs that I am aware of. If any is found, don't hesitate to contact me.
