@@ -252,33 +252,47 @@ def play(mod):
         print('\nThanks for playing! See you soon\n')
 
 
-print('-' * 50)
-print('\nWelcome to tic-tac-toe (Cabaret edition)!\n')
-print('-' * 50)
-print('\nPlay with your friends and family or challenge our artificial ' +
-      'intelligence (AI) Joep to see if machines are ready to defeat ' +
-      'us!\n')
-print('\nTic-tac-toe rules are simple and well defined, you can consult ' +
-      'wikipedia(https://en.wikipedia.org/wiki/Tic-tac-toe) ' +
-      'to refresh your mind.')
-print('Specifically, to play on this platform you need to remember ' +
-      'the following simple rules:')
-print('\n1. The game is played on a grid that\'s 3 squares by 3. ' +
-      'Each square is identified by a key and it can be represented as:')
-print('\n  q | w | e ')
-print('  --+---+--- ')
-print('  a | s | d ')
-print('  --+---+--- ')
-print('  z | x | c \n')
-print('  By entering the key showed in the figure above you can place ' +
-      'your move on the corresponding square. Such keys are chosen ' +
-      'for convenience on a "qwerty" keyboard.')
-print('  If you are playing on a different keyboard, I\'m sorry :)\n')
-print('\n2. You are X, your friend (or the computer) is O. ' +
-      'Players take turns putting their marks in empty squares.')
-print('\n3. Try to let Joep win sometimes, it will make him happy!')
-print('\n Have fun!!!\n')
-print('-' * 50)
-print('\n Ⓒ Agree to Disagree 2022\n')
+# Start game
+def main():
+    print('-' * 50)
+    print('\nWelcome to tic-tac-toe (Cabaret edition)!\n')
+    print('-' * 50)
+    print('\nPlay with your friends and family or challenge our artificial ' +
+          'intelligence (AI) Joep to see if machines are ready to defeat ' +
+          'us!\n')
+    print('\nTic-tac-toe rules are simple and well defined, you can consult ' +
+          'wikipedia(https://en.wikipedia.org/wiki/Tic-tac-toe) ' +
+          'to refresh your mind.')
+    print('Specifically, to play on this platform you need to remember ' +
+          'the following simple rules:')
+    print('\n1. The game is played on a grid that\'s 3 squares by 3. ' +
+          'Each square is identified by a key and it can be represented as:')
+    print('\n  q | w | e ')
+    print('  --+---+--- ')
+    print('  a | s | d ')
+    print('  --+---+--- ')
+    print('  z | x | c \n')
+    print('  By entering the key showed in the figure above you can place ' +
+          'your move on the corresponding square. Such keys are chosen ' +
+          'for convenience on a "qwerty" keyboard.')
+    print('  If you are playing on a different keyboard, I\'m sorry :)\n')
+    print('\n2. You are X, your friend (or the computer) is O. ' +
+          'Players take turns putting their marks in empty squares.')
+    print('\n3. Try to let Joep win sometimes, it will make him happy!')
+    print('\n Have fun!!!\n')
+    print('-' * 50)
+    print('\n Ⓒ Agree to Disagree 2022\n')
 
-play(1)
+    mod = input('Select the game mode: (answer with 1 or 2)\n' +
+                '1. vs a friend; \n' +
+                '2. vs the computer \n')
+    # Welcome message from the computer
+    if int(mod) == 2:
+        print(computer_welcome[random.choice(range(len(computer_welcome)))])
+        print('\nOh, and I will be playin O, while you will play X. ' +
+              'I am a gentleman, so go first!')
+        sleep(2)
+
+    play(mod)
+
+main()
