@@ -183,6 +183,16 @@ def play(mod):
         render_field(game_field)
         print(colored("\nGreat game, it's a tie!", 'yellow'))
 
+    # Ask if the player wants to play again
+    play_again = input('\nDo you want to play again? (y/n)\n')
+    if(play_again == 'y' or play_again == 'Y' or
+       play_again == 'yes' or play_again == 'Yes' or
+       play_again == 'YES'):
+        prev_first_move = 'O' if prev_first_move == 'X' else 'X'
+        play(mod)
+    else:
+        print('\nThanks for playing! See you soon\n')
+
 
 print('-' * 50)
 print('\nWelcome to tic-tac-toe (Cabaret edition)!\n')
