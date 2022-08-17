@@ -202,6 +202,11 @@ def play(mod):
                 entry = computer_move(game_matrix)
                 print(entry)
 
+        # Quit game
+        if entry == 'quit' or entry == 'exit':
+            print(colored('Game aborted', 'red'))
+            break
+
         # Check if the input is valid
         if entry in game_field.keys():
             if game_field[entry] is None:
@@ -232,24 +237,27 @@ def play(mod):
         move = 'X' if move == 'O' else 'O'
 
     # End game
-    if win:
-        for key in win_keys_combinations[winner_combination][0]:
-            game_field[key] = colored(game_field[key], 'red')
-        render_field(game_field)
-        print(colored('\nCongratulation ' + winner + ', you won!', 'green'))
-    else:
-        render_field(game_field)
-        print(colored("\nGreat game, it's a tie!", 'yellow'))
-
-    # Ask if the player wants to play again
-    play_again = input('\nDo you want to play again? (y/n)\n')
-    if(play_again == 'y' or play_again == 'Y' or
-       play_again == 'yes' or play_again == 'Yes' or
-       play_again == 'YES'):
-        prev_first_move = 'O' if prev_first_move == 'X' else 'X'
-        play(mod)
-    else:
+    if entry == 'quit' or entry == 'exit':
         print('\nThanks for playing! See you soon\n')
+    else:
+        if win:
+            for key in win_keys_combinations[winner_combination][0]:
+                game_field[key] = colored(game_field[key], 'red')
+            render_field(game_field)
+            print(colored('\nCongratulation ' + winner + ', you won!', 'green'))
+        else:
+            render_field(game_field)
+            print(colored("\nGreat game, it's a tie!", 'yellow'))
+
+        # Ask if the player wants to play again
+        play_again = input('\nDo you want to play again? (y/n)\n')
+        if(play_again == 'y' or play_again == 'Y' or
+        play_again == 'yes' or play_again == 'Yes' or
+        play_again == 'YES'):
+            prev_first_move = 'O' if prev_first_move == 'X' else 'X'
+            play(mod)
+        else:
+            print('\nThanks for playing! See you soon\n')
 
 
 # Start game
@@ -280,6 +288,7 @@ def main():
           'Players take turns putting their marks in empty squares.')
     print('\n3. Try to let Joep win sometimes, it will make him happy!')
     print('\n Have fun!!!\n')
+    print('P.S.: To quit the game at any time, type "quit" or "exit"')
     print('-' * 50)
     print('\n Ⓒ Agree to Disagree 2022\n')
 
@@ -290,7 +299,7 @@ def main():
                     '1. vs a friend; \n' +
                     '2. vs the computer \n')
         if mod is not '1' and mod is not '2':
-            print('Invalid input, please try again')
+            print('Invalid input, please try again\n')
             continue
         else:
             validate = True
