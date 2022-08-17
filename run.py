@@ -99,6 +99,91 @@ def check_win(matrix):
         return win, winner, winner_combination
 
 
+def play(mod):
+    ''' The game will be first initialized to create an empty
+    game field, count the number of turns played and
+    understand who is first to move. Then the game is played 
+    until there is a winner or the game is a draw. At the end
+    of the game the player can choose to play again or not.
+    If played again, only the game field and the number of turn
+    played will be reinitialized, while the first mover will be
+    the who was not the first mover in the previous game.
+    Finally the input mod will determine if the opponent is
+    the computer or another player'''
+    # Initialize game
+    # Initialize first move
+    global prev_first_move
+    try:
+        prev_first_move
+    except NameError:
+        prev_first_move = 'O'
+
+    # Initialize game field
+    game_field = {key: None for key in game_keys.flatten()}
+    game_matrix = np.zeros((3, 3))
+
+    turn = 0
+    move = 'X' if prev_first_move == 'O' else 'O'
+
+    print('\n' + move + ' starts, good luck!')
+
+    # Start game
+    while turn < 9:
+
+        render_field(game_field)
+        print(move + ' moves, select a key to place your move')
+
+        # Get input
+        if int(mod) == 1:
+            entry = input()
+        else:
+            if move == 'X':
+                entry = input()
+            else:
+                sleep(1.5)
+                entry = computer_move(game_matrix)
+                print(entry)
+
+        # Check if the input is valid
+        if entry in game_field.keys():
+            if game_field[entry] is None:
+                game_field[entry] = move
+                turn += 1
+            else:
+                print('The entry selected is already filled, ' +
+                      'choose a different cell')
+                continue
+        else:
+            print('The entry selected is not valid, ' +
+                  'choose a different key')
+            continue
+
+        # Update game matrix
+        game_matrix = np.array([0 if move is None
+                                else (1 if move == 'X' else -1)
+                                for move in game_field.values()])
+        game_matrix = game_matrix.reshape(3, 3)
+
+        # Check if the game is over
+        if turn > 2:
+            win, winner, winner_combination = check_win(game_matrix)
+            if win:
+                break
+
+        # Next move
+        move = 'X' if move == 'O' else 'O'
+
+    # End game
+    if win:
+        for key in win_keys_combinations[winner_combination][0]:
+            game_field[key] = colored(game_field[key], 'red')
+        render_field(game_field)
+        print(colored('\nCongratulation ' + winner + ', you won!', 'green'))
+    else:
+        render_field(game_field)
+        print(colored("\nGreat game, it's a tie!", 'yellow'))
+
+
 print('-' * 50)
 print('\nWelcome to tic-tac-toe (Cabaret edition)!\n')
 print('-' * 50)
@@ -127,3 +212,5 @@ print('\n3. Try to let Joep win sometimes, it will make him happy!')
 print('\n Have fun!!!\n')
 print('-' * 50)
 print('\n Ⓒ Agree to Disagree 2022\n')
+
+play(1)
