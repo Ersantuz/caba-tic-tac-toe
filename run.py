@@ -23,6 +23,42 @@ win_keys_combinations = np.array([game_keys[:, 0],
                                             game_keys[2, 0]])
                                   ])
 
+
+# Render game field
+def render_key(key):
+    """
+    Check if the value is None and manage print statement
+    """
+    if key is None:
+        return ' '
+    return key
+
+
+def render_field(field):
+    """
+    Render the game field on the console
+    """
+    print('\n')
+    print(render_key(field['q']) +
+          ' | ' +
+          render_key(field['w']) +
+          ' | ' +
+          render_key(field['e']))
+    print('--+---+--')
+    print(render_key(field['a']) +
+          ' | ' +
+          render_key(field['s']) +
+          ' | ' +
+          render_key(field['d']))
+    print('--+---+--')
+    print(render_key(field['z']) +
+          ' | ' +
+          render_key(field['x']) +
+          ' | ' +
+          render_key(field['c']))
+    print('\n')
+
+
 print('-' * 50)
 print('\nWelcome to tic-tac-toe (Cabaret edition)!\n')
 print('-' * 50)
