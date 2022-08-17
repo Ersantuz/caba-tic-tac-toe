@@ -59,6 +59,46 @@ def render_field(field):
     print('\n')
 
 
+def status(matrix):
+    """
+    Create a vector representing the actual game status,
+    where the status is described by the sum of the vector
+    elements in the winning combinations.
+    """
+    res = np.zeros(8)
+    res[0:3] = matrix.sum(axis=0)  # Columns combinations
+    res[3:6] = matrix.sum(axis=1)  # Rows combinations
+    res[6] = matrix.trace()  # Diagonal
+    res[7] = np.flip(matrix, axis=1).trace()  # Anti-diagonal
+
+    return res
+
+
+def check_win(matrix):
+    """
+    Check if there is a winner
+    """
+    # Check game status
+    res = status(matrix)
+
+    # Check if there is a winner
+    if np.any(res == 3):
+        winner_combination = np.where(res == 3)[0]
+        winner = 'X'
+        win = True
+        return win, winner, winner_combination
+    elif np.any(res == -3):
+        winner_combination = np.where(res == -3)[0]
+        winner = 'O'
+        win = True
+        return win, winner, winner_combination
+    else:
+        winner_combination = None
+        winner = None
+        win = False
+        return win, winner, winner_combination
+
+
 print('-' * 50)
 print('\nWelcome to tic-tac-toe (Cabaret edition)!\n')
 print('-' * 50)
