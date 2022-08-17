@@ -283,9 +283,18 @@ def main():
     print('-' * 50)
     print('\n Ⓒ Agree to Disagree 2022\n')
 
-    mod = input('Select the game mode: (answer with 1 or 2)\n' +
-                '1. vs a friend; \n' +
-                '2. vs the computer \n')
+    # Choose game mode
+    validate = False
+    while not validate:
+        mod = input('Select the game mode: (answer with 1 or 2)\n' +
+                    '1. vs a friend; \n' +
+                    '2. vs the computer \n')
+        if mod is not '1' and mod is not '2':
+            print('Invalid input, please try again')
+            continue
+        else:
+            validate = True
+
     # Welcome message from the computer
     if int(mod) == 2:
         print(computer_welcome[random.choice(range(len(computer_welcome)))])
