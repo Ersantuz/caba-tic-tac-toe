@@ -9,7 +9,7 @@ The Cabaret Tic-Tac-Toe is a Python terminal game, running in the Code Institute
 Play with your friends and family or challenge our artificial intelligence (AI) Joep to see if machines are ready to defeat us!
 
 <br>
-<h2 align="center"><img src="assets/images/screenshots.png" id="wb-screen" alt="website screenshot" target="_blank" width=30%></h2>
+<h2 align="center"><img src="assets/images/screenshots.png" id="wb-screen" alt="website screenshot" target="_blank" width=50%></h2>
 
 ## How to play
 
@@ -43,13 +43,13 @@ P.S.: To quit the game at any time, type "quit" or "exit"
     - vs a friend,
     - vs computer.
 
-<h2><img src="assets/images/game_mode.png" id="game-mode" alt="console screenshot" target="_blank" width=50%></h2>
+<h2><img src="assets/images/game_mode.png" id="game-mode" alt="console screenshot" target="_blank" width=30%></h2>
 
 - Colour prompt to highlight victories and messages.
 - Possibility of playing again, with alternating first movers.
 - Possibility of quitting the game without finishing it.
 
-<h2><img src="assets/images/color_restart.png" id="col-res" alt="console screenshot" target="_blank" width=50%></h2>
+<h2><img src="assets/images/color_restart.png" id="col-res" alt="console screenshot" target="_blank" width=30%></h2>
 
 - Input validation:
     - with every input request you can only enter the specified answers, otherwise you will be asked to enter the input again after a useful error message.
