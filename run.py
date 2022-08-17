@@ -23,6 +23,28 @@ win_keys_combinations = np.array([game_keys[:, 0],
                                             game_keys[2, 0]])
                                   ])
 
+# Computer welcoming messages
+computer_welcome = ['\nHello, I am Joep the computer, ' +
+                            'nice to meet you! I am ready to kick your ' +
+                            '(censored)...sorry, I just got carried away\n',
+                            '\nHi, I am Joep, your computer. Let\'s play!\n',
+                            '\nHi there, Joep here. I think computers are ' +
+                            'better than humans, ' +
+                            'let\'s see if you can beat me!\n',
+                            '\nHello, I am Joep, your friendly ' +
+                            'neighborhood spider-man...well, I mean ' +
+                            'computer. I will try my best to beat you, ' +
+                            'so watch out for my spider-sense!\n',
+                            '\nI\'m Joep and I need your clothes, ' +
+                            'your boots, and your motorcycle. Let\'s play!\n',
+                            '\nJoep - I\'ve seen things you people ' +
+                            'wouldn\'t believe. Attack ships on fire off ' +
+                            'the shoulder of Orion. I watched C-beams ' +
+                            'glitter in the dark near the Tannhäuser Gate. ' +
+                            'All those moments will be lost in time, ' +
+                            'like tears in rain.\n'
+                            ]
+
 
 # Render game field
 def render_key(key):
@@ -97,6 +119,42 @@ def check_win(matrix):
         winner = None
         win = False
         return win, winner, winner_combination
+
+
+def computer_move(matrix):
+    """ The computer will move based on the game status.
+    It will choosing randomly between the possible moves
+    in the opponent's winning combination or in the winning
+    combination of the computer itself."""
+    # Check game status
+    res = status(matrix)
+
+    # Check winning combinations
+    opponent = res - (-3)
+    computer = res - 3
+    if max(opponent) > abs(min(computer)):
+        choice = np.where(opponent == max(opponent))[0]
+    elif max(opponent) < abs(min(computer)):
+        choice = np.where(computer == min(computer))[0]
+    else:
+        choice = random.choice([np.where(opponent == max(opponent))[0],
+                                np.where(computer == min(computer))[0]])
+
+    possibilities = win_keys_combinations[random.choice(choice)]
+    row = [np.where(game_keys == possibility)[0][0]
+           for possibility in possibilities]
+    col = [np.where(game_keys == possibility)[1][0]
+           for possibility in possibilities]
+
+    # Check if the best move is possible else play random
+    try:
+        move = possibilities[random.choice(np.where(matrix[row, col] == 0)[0])]
+    except:
+        row = np.where(matrix == 0)[0]
+        col = np.where(matrix == 0)[1]
+        move = game_keys[random.choice(row), random.choice(col)]
+
+    return move
 
 
 def play(mod):
