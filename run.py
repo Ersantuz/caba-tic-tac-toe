@@ -298,7 +298,7 @@ def main():
         mod = input('Select the game mode: (answer with 1 or 2)\n' +
                     '1. vs a friend; \n' +
                     '2. vs the computer \n')
-        if mod is not '1' and mod is not '2':
+        if mod != '1' and mod != '2':
             print('Invalid input, please try again\n')
             continue
         else:
